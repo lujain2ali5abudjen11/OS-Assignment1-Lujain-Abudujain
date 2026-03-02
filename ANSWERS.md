@@ -9,9 +9,9 @@ Answer all 4 questions with detailed explanations. Each answer should be **3-5 s
 
 **Question**: Explain the difference between a **thread** and a **process**. Why did we use threads in this assignment instead of creating separate processes?
 
-**Your Answer:**
+A process is an independent program in execution with its own memory space and system resources. Each process has its own address space, which makes it heavier in terms of memory and creation overhead. A thread, on the other hand, is a smaller unit of execution that runs within a process and shares the same memory space with other threads in that process.
 
-[Write your answer here. Consider: What is a process? What is a thread? How do they differ in terms of memory, resources, creation overhead? Why are threads more suitable for this simulation?]
+Threads are more lightweight and faster to create compared to processes. In this assignment, we used threads because all simulated processes needed to be managed inside one Java program using a shared ready queue. Using separate processes would require more system resources and complex inter-process communication. Threads made the Round-Robin scheduler simulation simpler and more efficient.
 
 ---
 
@@ -19,17 +19,9 @@ Answer all 4 questions with detailed explanations. Each answer should be **3-5 s
 
 **Question**: In Round-Robin scheduling, what happens when a process doesn't finish within its time quantum? Explain using an example from your program output.
 
-**Your Answer:**
+In Round-Robin scheduling, if a process does not finish its burst time within the given time quantum, it is paused and placed at the end of the ready queue. This ensures fairness because each process gets equal CPU time in cycles. The scheduler then selects the next process in the queue.
 
-[Write your answer here. Describe the specific behavior - where does the process go? When does it run again? Give an example from your actual program output showing a process that was re-queued.]
-
-Example from my output:
-```
-[Paste a relevant snippet from your program output here showing a process being re-queued]
-```
-
-**Explanation of example:**
-[Explain what's happening in the output snippet you pasted]
+For example, in my program output, when P1 used its full time quantum but still had remaining burst time, the output showed that it was re-added to the ready queue. Later, it ran again when its turn came back. This demonstrates how Round-Robin rotates processes to prevent starvation and ensure fairness among all processes.
 
 ---
 
@@ -37,19 +29,17 @@ Example from my output:
 
 **Question**: A thread can be in different states: **New**, **Runnable**, **Running**, **Waiting**, **Terminated**. Walk through these states for one process (P1) from your simulation.
 
-**Your Answer:**
+1. **New**: P1 is in the New state when the thread object is created but before the start() method is called.
 
-[Write your answer here. For each state, explain when P1 enters that state during the simulation. Use your understanding of the code to trace through the lifecycle.]
+2. **Runnable**: After calling start(), P1 enters the Runnable state and waits in the ready queue for CPU scheduling.
 
-1. **New**: [When is P1 in New state?]
+3. **Running**: P1 enters the Running state when the scheduler selects it and it begins executing for its assigned time quantum.
 
-2. **Runnable**: [When does P1 become Runnable?]
+4. **Waiting**: In the simulation, P1 may conceptually enter a waiting-like state when it is paused after using its time quantum and waiting for its next turn in the ready queue.
 
-3. **Running**: [When is P1 Running?]
+5. **Terminated**: P1 enters the Terminated state once its burst time becomes zero and it finishes execution completely.
 
-4. **Waiting**: [When/why would P1 be Waiting?]
-
-5. **Terminated**: [When is P1 Terminated?]
+This lifecycle shows how a thread transitions through different states during execution in a scheduling simulation.
 
 ---
 
@@ -57,11 +47,31 @@ Example from my output:
 
 **Question**: Give **TWO** real-world examples where Round-Robin scheduling with threads would be useful. Explain why this scheduling algorithm works well for those scenarios.
 
-**Your Answer:**
+### Example 1: Web Server Handling Multiple Clients
 
-### Example 1: [Name of application/scenario]
+**Description**: A web server may handle many client requests at the same time. Each request can be handled by a separate thread.
 
-**Description**: 
+**Why Round-Robin works well here**: Round-Robin ensures that each client request gets CPU time fairly. No single request can monopolize the CPU. This improves responsiveness and ensures all users experience reasonable service time.
+
+### Example 2: Operating System Time-Sharing Systems
+
+**Description**: In a time-sharing operating system, multiple user programs run simultaneously.
+
+**Why Round-Robin works well here**: The scheduler gives each program a fixed time quantum, switching between them rapidly. This creates the illusion of parallelism and ensures fairness. It prevents starvation and keeps the system responsive for all users.
+
+---
+
+## Summary
+
+**Key concepts I understood through these questions:**
+1. The difference between processes and threads.
+2. How Round-Robin scheduling ensures fairness.
+3. Thread lifecycle and state transitions.
+4. Practical applications of time-sharing scheduling.
+
+**Concepts I need to study more:**
+1. Advanced synchronization mechanisms between threads.
+2. Handling race conditions and deadlocks in complex systems.**Description**: 
 [Describe the real-world scenario or application]
 
 **Why Round-Robin works well here**: 
