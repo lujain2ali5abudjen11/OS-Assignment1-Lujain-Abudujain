@@ -33,7 +33,7 @@ I reviewed the assignment instructions carefully and confirmed the correct locat
 
 ---
 
-## Entry 2 – [March 2, 2026 – 6:15 PM]
+## Entry 2 – [March 3, 2026 – 6:15 PM]
 
 **What I did:**  
 Started implementing the Round-Robin scheduler structure.
@@ -54,7 +54,7 @@ I revised how Thread.start() and Thread.join() work and applied them step by ste
 
 ---
 
-## Entry 3 – [March 2, 2026 – 7:30 PM]
+## Entry 3 – [March 4, 2026 – 7:30 PM]
 
 **What I did:**  
 Improved process execution logic and re-queuing behavior.
@@ -74,7 +74,7 @@ Adjusted the condition logic and tested multiple runs to ensure correct re-queui
 
 ---
 
-## Entry 4 – [March 2, 2026 – 8:45 PM]
+## Entry 4 – [March 5, 2026 – 8:45 PM]
 
 **What I did:**  
 Implemented Feature 2 (Context Switch Counter).
@@ -94,7 +94,7 @@ Placed it inside the scheduling loop before starting the next thread and ensured
 
 ---
 
-## Entry 5 – [March 2, 2026 – 9:45 PM]
+## Entry 5 – [March 6, 2026 – 9:45 PM]
 
 **What I did:**  
 Implemented Feature 3 (Waiting Time Tracking).
