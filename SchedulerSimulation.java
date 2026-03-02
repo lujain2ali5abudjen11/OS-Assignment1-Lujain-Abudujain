@@ -221,6 +221,14 @@ public class SchedulerSimulation {
         // Loop to manage the scheduling of processes
         while (!processQueue.isEmpty()) {
             // Get the next thread from the queue (FIFO)
+            List<Thread> sortedList = new ArrayList<>(processQueue);
+
+sortedList.sort((t1, t2) -> 
+    processMap.get(t2).getPriority() - processMap.get(t1).getPriority()
+);
+
+processQueue.clear();
+processQueue.addAll(sortedList);
             Thread currentThread = processQueue.poll(); // Dequeues the next thread
             
             // Print the current process queue (list of process IDs in the queue)
